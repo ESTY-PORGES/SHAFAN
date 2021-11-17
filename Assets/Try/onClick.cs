@@ -8,25 +8,30 @@ using UnityEngine.UI;
 
 public class onClick : MonoBehaviour
 {
+    
+    private SoundManager soundScript;
+   
 
-    Dictionary<Button, AudioClip> dict = new Dictionary<Button, AudioClip>();
 
-  
 
-    public void Play()
-    {
 
-        //print("buttons");
+	public void Start()
+	{
+		for (int i = 0; i < soundScript.buttons.Length; i++)
+		{
+			Button button = soundScript.buttons[i];
+			button.onClick.RemoveAllListeners();
+			button.onClick.AddListener(() => OnClick(i));
+		}
+	}
 
-        ////for (int i = 0; i < dict.Count; i++)
-        ////{
-
-        //dict.Add(buttons[0], audioClips[0]);
-
-        //}
-
-    }
+	private void OnClick(int index)
+	{
+		Debug.Log("You click button at index: " + index);
+	}
 
 }
+
+
 
 
