@@ -7,20 +7,25 @@ public class SoundManager : MonoBehaviour
 {
     public Button[] buttons;
     public AudioClip[] audioClips;
+    public AudioSource audioSource;
+
     Dictionary<Button, AudioClip> dict = new Dictionary<Button, AudioClip>();
+    int i;
+
+
     void Start()
     {
-        for (int i = 0; i<3; i++ )
-        {
-            dict.Add(buttons[i], audioClips[i]);
+        audioSource = GetComponent<AudioSource>();
 
-        }
+
+        //for (int i = 0; i < dict.Count; i++)
+        //{
+        //    dict.Add(buttons[i], audioClips[i]);
+
+        //}
+
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

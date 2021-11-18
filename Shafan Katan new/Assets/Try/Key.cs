@@ -6,15 +6,12 @@ public class Key : MonoBehaviour
 {
     [SerializeField] private int buttonNum;
 
-    // Start is called before the first frame update
-    void Start()
+    
+    public int GetbuttonNum()
     {
-        
+        return buttonNum;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }

@@ -2,33 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 
 
 public class onClick : MonoBehaviour
 {
-    
-    private SoundManager soundScript;
+    [SerializeField]
+    private SoundManager soundManager;
+
+    private int numKeyPreesd;
+
    
 
+    public void OnClickKey()
+    {
+        numKeyPreesd = EventSystem.current.currentSelectedGameObject.GetComponent<Key>().GetbuttonNum();
 
+        soundManager.audioSource.clip = soundManager.audioClips[numKeyPreesd];
+        soundManager.audioSource.Play();
 
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+        Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponent<Key>().GetbuttonNum());
 
-	public void Start()
-	{
-		for (int i = 0; i < soundScript.buttons.Length; i++)
-		{
-			Button button = soundScript.buttons[i];
-			button.onClick.RemoveAllListeners();
-			button.onClick.AddListener(() => OnClick(i));
-		}
-	}
+        //EventSystem.current.currentSelectedGameObject.transform.position = Vector3.Lerp(EventSystem.current.currentSelectedGameObject.transform.position, System.Array.IndexOf(vector3array, currentObject) vector3array[currentObject.index], Time.deltaTime);
 
-	private void OnClick(int index)
-	{
-		Debug.Log("You click button at index: " + index);
-	}
+        //System.Array.IndexOf(soundManager.buttons) vector3array[currentObject.index]
+
+        //EventSystem.current.currentSelectedGameObject.Array.IndexOf(soundManager.buttons);
+
+    }
+
 
 }
 
